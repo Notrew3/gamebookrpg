@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/gamebook/classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'G' => 
+        array (
+            'Game\\' => 5,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Game\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gamebook/classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -41,7 +51,8 @@ class ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit923c54bcf0757fdce4b32cc6c6958e96::$classMap;
 

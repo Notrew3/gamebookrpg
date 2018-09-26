@@ -3,7 +3,8 @@
 require_once("vendor/autoload.php");
 
 use  \Slim\Slim;
-use DB\Sql;
+use \Game\DB\Sql;
+use \Game\Page;
 
 $app = new Slim();
 
@@ -11,19 +12,12 @@ $app->config('debug', true);
 
 $app->get('/', function(){
 
-	$sql = new Sql();
+	$page = new Page();
 
-	$results = $sql->select("SELECT * FROM tb_users");
-
-	echo json_encode($results);
+	$page->setTpl("index");
 
 }); 
 
-$app->get('/sobre', function(){
-
-
-
-}); 
 
 $app->run();
 

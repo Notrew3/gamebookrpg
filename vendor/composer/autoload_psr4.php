@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '' => array($vendorDir . '/gamebook/classes/src'),
+    'Game\\' => array($vendorDir . '/gamebook/classes/src'),
 );
