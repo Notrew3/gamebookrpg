@@ -69,6 +69,22 @@ $app->get('/painel/logout', function(){
 	exit;
 });
 
+$app->get('/painel/add-book', function(){
+
+	User::verifyLogin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("add-book");
+
+}); 
+
+$app->post('/painel/add-book', function(){
+
+	echo "Post Book";
+
+}); 
+
 $app->run();
 
 ?>
