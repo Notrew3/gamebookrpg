@@ -33,6 +33,8 @@ $app->get('/painel', function(){
 
 	User::verifyLogin();
 
+	
+
 	$page = new PageAdmin();
 
 	$page->setTpl("index");
@@ -72,10 +74,13 @@ $app->get('/painel/logout', function(){
 $app->get('/painel/add-book', function(){
 
 	User::verifyLogin();
+	$user = User::userSession();
 
 	$page = new PageAdmin();
 
-	$page->setTpl("add-book");
+	$page->setTpl("add-book",array(
+		"user"=>$user
+	));
 
 }); 
 

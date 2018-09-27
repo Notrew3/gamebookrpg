@@ -71,6 +71,11 @@ class User extends Model
 		$_SESSION[User::SESSION] = NULL;
 		
 	}
+
+	public static function userSession()
+	{
+		return $_SESSION[User::SESSION];
+	}
 }
 
 ?>

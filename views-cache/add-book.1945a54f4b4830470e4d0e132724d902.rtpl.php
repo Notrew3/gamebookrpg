@@ -7,7 +7,7 @@
 	<div class="col-xs-8">
 	<form action="/painel/add-book" method="post">
 	      <div class="form-group has-feedback">
-	        <input type="text" class="form-control" placeholder="Nome do Livro" name="nome">
+	        <input type="text" class="form-control" placeholder="<?php echo htmlspecialchars( $user["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="nome">
 	        <span class="glyphicon glyphicon-book form-control-feedback"></span>
 	      </div>
 	      <div class="form-group has-feedback">
