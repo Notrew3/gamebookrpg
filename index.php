@@ -7,6 +7,7 @@ use \Game\DB\Sql;
 use \Game\PageAdmin;
 use \Game\Page;
 use \Game\Models\User;
+use \Game\Models\Book;
 
 
 $app = new Slim();
@@ -75,18 +76,23 @@ $app->get('/painel/add-book', function(){
 
 	User::verifyLogin();
 	$user = User::userSession();
+	$categories = Book::allCategories();
 
 	$page = new PageAdmin();
 
 	$page->setTpl("add-book",array(
-		"user"=>$user
+		"user"=>$user,
+		"categories"=>$categories
 	));
 
 }); 
 
 $app->post('/painel/add-book', function(){
 
-	echo "Post Book";
+	Book::insertBook($_POST["nome"], $_POST["categoria"]);
+
+	header("Location: /painel/add-book");
+	exit;
 
 }); 
 
