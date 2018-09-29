@@ -88,11 +88,27 @@ $app->get('/painel/add-book', function(){
 }); 
 
 $app->post('/painel/add-book', function(){
+	User::verifyLogin();
+	$last_id = Book::insertBook($_POST["nome"], $_POST["categoria"], $_POST["id_user"]);
 
-	Book::insertBook($_POST["nome"], $_POST["categoria"]);
-
-	header("Location: /painel/add-book");
+	header("Location: /painel/my-books");
 	exit;
+
+}); 
+$app->get('/painel/my-books', function(){
+
+	User::verifyLogin();
+	$user = User::userSession();
+	$categories = Book::allCategories();
+	$books = Book::myBooks($user["id"]);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("my-books",array(
+		"user"=>$user,
+		"categories"=>$categories,
+		"books"=>$books
+	));
 
 }); 
 

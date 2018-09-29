@@ -14,9 +14,10 @@
 	        <select name="categoria" class="form-control">
 	        	<option value="" selected>--Selecione a Categoria--</option>
 	        	{loop="$categories"}
-	        	<option value="{$value.id}">{$value.nome}</option>
+	        	<option value="{$value.id}">{$value.nome_categoria}</option>
 	        	{/loop}
 	        </select>
+	        <input type="hidden" name="id_user" value="{$user.id}">
 	       </div>	      
 	        <!-- /.col -->
 	        <div class="form-group has-feedback">

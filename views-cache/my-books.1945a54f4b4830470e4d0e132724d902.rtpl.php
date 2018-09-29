@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -31,17 +31,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$books"}
+                  <?php $counter1=-1;  if( isset($books) && ( is_array($books) || $books instanceof Traversable ) && sizeof($books) ) foreach( $books as $key1 => $value1 ){ $counter1++; ?>
                   <tr>
-                    <td>{$value.id}</td>
-                    <td>{$value.nome_livro}</td>
-                    <td>{$value.nome_categoria}</td>
+                    <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <td><?php echo htmlspecialchars( $value1["nome_livro"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                    <td><?php echo htmlspecialchars( $value1["nome_categoria"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <!--<td>
-                      <a href="/painel/my-books/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/painel/my-books/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="/painel/my-books/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <a href="/painel/my-books/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>-->
                   </tr>
-                  {/loop}
+                  <?php } ?>
                 </tbody>
               </table>
             </div>

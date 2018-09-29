@@ -14,9 +14,10 @@
 	        <select name="categoria" class="form-control">
 	        	<option value="" selected>--Selecione a Categoria--</option>
 	        	<?php $counter1=-1;  if( isset($categories) && ( is_array($categories) || $categories instanceof Traversable ) && sizeof($categories) ) foreach( $categories as $key1 => $value1 ){ $counter1++; ?>
-	        	<option value="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+	        	<option value="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nome_categoria"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 	        	<?php } ?>
 	        </select>
+	        <input type="hidden" name="id_user" value="<?php echo htmlspecialchars( $user["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 	       </div>	      
 	        <!-- /.col -->
 	        <div class="form-group has-feedback">

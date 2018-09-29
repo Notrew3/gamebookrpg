@@ -256,8 +256,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="/painel/add-book"><i class="fa fa-link"></i> <span>Criar Livro</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="active"><a href="/painel/add-book"><i class="fa fa-gear"></i> <span>Criar Livro</span></a></li>
+        <li><a href="/painel/my-books"><i class="fa fa-book"></i> <span>Meus Livros</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

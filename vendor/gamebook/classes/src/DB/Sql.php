@@ -40,14 +40,21 @@ class Sql {
 
 	}
 
-	public function query($rawQuery, $params = array())
+	public function query($rawQuery, $queryType = "", $params = array())
 	{
 
 		$stmt = $this->conn->prepare($rawQuery);
 
 		$this->setParams($stmt, $params);
 
+		if($queryType == "insert")
+		{
+			$stmt->execute();
+			return $this->conn->lastInsertId();
+		} else 
+		{
 		$stmt->execute();
+		}
 
 	}
 
