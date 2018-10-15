@@ -3,7 +3,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Meus Livros
+    {$chapters[0].nome_livro}
   </h1>
   <ol class="breadcrumb">
     <li><a href="/painel"><i class="fa fa-dashboard"></i> Home</a>
@@ -14,7 +14,7 @@
 <section class="content">
 
   <div class="row">
-  	<div class="col-md-6">
+  	<div class="col-md-9">
   		<div class="box box-primary">
             
             <div class="box-header">
@@ -25,21 +25,21 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Nome do Livro</th>
-                    <th>Categoria</th>
+                    <th>Nome do capitulo</th>
+                    <th>Sub Titulo</th>
+                    <th>Resumo</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$books"}
+                  {loop="$chapters"}
                   <tr>
-                    <td>{$value.id}</td>
-                    <td><a href="/painel/my-books/{$value.id}/capitulos">{$value.nome_livro}</a></td>
-                    <td>{$value.nome_categoria}</td>
+                    <td>{$value.titulo}</td>
+                    <td>{$value.sub_titulo}</td>
+                    <td>{$value.texto}</td>
                     <td>
-                      <a href="/painel/my-books/{$value.id}/add-cap" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Capítulo</a>
-                      <a href="/painel/my-books/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="/painel/my-books/{$value.id_livro}/{$value.id}/add_page" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Paginas</a>
+                      <a href="#" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>
                   </tr>
                   {/loop}

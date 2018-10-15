@@ -1,4 +1,23 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><h1>Capitulo 1</h1>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!--
+Categoria{
+	id
+	nome
+}
+Livro{
+	nome
+	id_categoria
+}
+Capitulos{
+	id
+	id_livro
+	titulo
+	sub_titulo
+	texto	
+}
+
+-->
+
+<h1>Capitulo 1</h1>
 <h2>Titulo Do Capitulo</h2>
 <h6>Subtitulo Do Capitulo</h6>
 <hr>

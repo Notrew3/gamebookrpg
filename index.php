@@ -18,7 +18,7 @@ $app->get('/', function(){
 
 	$page = new Page();
 
-	$page->setTpl("index");
+	$page->setTpl("book");
 
 }); 
 
@@ -101,6 +101,12 @@ $app->get('/painel/my-books', function(){
 	$user = User::userSession();
 	$categories = Book::allCategories();
 	$books = Book::myBooks($user["id"]);
+	/*
+	array (size=3)
+      'id' => string '1' (length=1)
+      'nome_livro' => string 'Horda de Ovinis' (length=15)
+      'nome_categoria' => string 'Alienigenas' (length=11)
+	*/
 
 	$page = new PageAdmin();
 
@@ -111,6 +117,72 @@ $app->get('/painel/my-books', function(){
 	));
 
 }); 
+
+$app->get('/painel/my-books/:book_id/add-cap', function($book_id){
+
+	User::verifyLogin();
+	$user = User::userSession();
+	$book = Book::book($book_id, $user['id']);
+	
+	$page = new PageAdmin();
+	
+	$page->setTpl("add-cap", array(
+		"user"=>$user,
+		"book"=>$book
+	));
+
+	
+});
+
+$app->post('/painel/my-books/add-cap', function(){
+	User::verifyLogin();
+	$last_id = Book::insertChapter($_POST["id_book"], $_POST["titulo_cap"], $_POST["sub_cap"]);
+
+	header("Location: /painel/my-books");
+	exit;
+
+}); 
+
+$app->get('/painel/my-books/:book_id/capitulos', function($book_id){
+
+	User::verifyLogin();
+	$user = User::userSession();
+	$book = Book::book($book_id, $user['id']);
+	$chapters = Book::chapters($book_id, $user['id']);
+
+
+	
+	$page = new PageAdmin();
+
+	if(count($chapters) > 0){	
+		$page->setTpl("chapters", array(
+			"user"=>$user,
+			"chapters"=>$chapters
+		));
+	}else{
+		$page->setTpl("add-cap", array(
+			"user"=>$user,
+			"book"=>$book
+		));
+	}
+
+	
+});
+
+$app->get('/painel/my-books/:book_id/:chapter_id/add_page', function($book_id, $chapter_id){
+
+	User::verifyLogin();
+	$user = User::userSession();
+	$book = Book::chapter($chapter_id, $user['id']);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("add_page", array(
+		"user"=>$user,
+		"book"=>$book
+	));
+
+});
 
 $app->run();
 

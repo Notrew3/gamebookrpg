@@ -2,7 +2,14 @@
 
 namespace Game\DB;
 
+/**
+*@author Ewerton Azevedo
+*@package DB
+*@version 1.0
+*/
+
 class Sql {
+
 
 	const HOSTNAME = "127.0.0.1";
 	const USERNAME = "root";
@@ -10,6 +17,12 @@ class Sql {
 	const DBNAME = "gamebook";
 
 	private $conn;
+
+	/**
+	* Método construtor
+	* @access public
+	* @return void
+	*/
 
 	public function __construct()
 	{
@@ -22,21 +35,35 @@ class Sql {
 
 	}
 
+	/**
+	* Método que faz todos os bindsParams da Query
+	* @access private
+	* @param $statement Variável recebe a query SQL
+	* @param $parameters Array com todos as referências e valores dos binds
+	* @return void
+	*/
+
 	private function setParams($statement, $parameters = array())
 	{
-
+		
 		foreach ($parameters as $key => $value) {
 			
 			$this->bindParam($statement, $key, $value);
 
+
 		}
 
+
+
 	}
+
+	
 
 	private function bindParam($statement, $key, $value)
 	{
 
 		$statement->bindParam($key, $value);
+
 
 	}
 
